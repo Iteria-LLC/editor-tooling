@@ -28,7 +28,7 @@
 
 # Gradle cache directory
 
-/[Aa]ssets/[Ss]cenes/
+/[Aa]ssets/[Ss]cenes/*
 
 .gradle/
 
