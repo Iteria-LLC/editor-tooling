@@ -3,8 +3,7 @@
     "rootNamespace": "",
     "references": [],
     "includePlatforms": [
-        "Editor",
-        "WebGL"
+        "Editor"
     ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
