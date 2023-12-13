@@ -18,7 +18,7 @@ namespace Iteria.EditorTooling
 			SceneView.lastActiveSceneView.drawGizmos = !SceneView.lastActiveSceneView.drawGizmos;
 		}
 
-		[MenuItem("Tools/Editor/Toggle Gizmos & Selection Highlight"), Shortcut("Toggle Gizmos & Selection Highlight", UnityEngine.KeyCode.Space, ShortcutModifiers.Control)]
+		[MenuItem("Tools/Editor/Toggle Gizmos + Selection Highlight"), Shortcut("Toggle Gizmos & Selection Highlight", UnityEngine.KeyCode.Space, ShortcutModifiers.Control)]
 		public static void ToggleSelectionOutlinesAndGizmos()
 		{
 			if(ShowSelectionOutline || ShowSelectionWire)

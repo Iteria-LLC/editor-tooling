@@ -1,7 +1,9 @@
 {
-    "name": "editor-tooling",
+    "name": "editor-tooling-editor",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:ef38e5b6907283f4fb7aef5775503c97"
+    ],
     "includePlatforms": [
         "Editor"
     ],

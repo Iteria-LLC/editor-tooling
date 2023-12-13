@@ -7,9 +7,17 @@ namespace Iteria.EditorTooling
 {
 	public static class EditorTools
 	{
+		[MenuItem("File/Open Persistent Data Folder", priority = 225)]
+		public static void OpenPersistentData()
+		{
+			var path = GetFullPath(Application.persistentDataPath);
+			System.Diagnostics.Process.Start("explorer", @path);
+		}
+
 		[MenuItem("File/Run Existing Build", priority = 211)]
 		public static void RunExistingBuild()
 		{
+			//TODO actually find build path instead of hard coding one.
 			var path = GetFullPath(Combine(Application.dataPath, "..", "Builds", $"{Application.productName}.exe"));
 			if(System.IO.File.Exists(path))
 				System.Diagnostics.Process.Start(path);
@@ -35,7 +43,7 @@ namespace Iteria.EditorTooling
 				Undo.RecordObjects(transforms, "Rotate 90 Degrees");
 				foreach(var t in transforms)
 				{
-					if(UnityEditor.Tools.pivotMode == PivotMode.Pivot)
+					if(Tools.pivotMode == PivotMode.Pivot)
 						t.RotateAround(Selection.activeTransform.position, Vector3.up, 90f);
 					else
 						t.RotateAround(center, Vector3.up, 90f);
