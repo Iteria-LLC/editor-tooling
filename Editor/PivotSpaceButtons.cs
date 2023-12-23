@@ -40,15 +40,13 @@ namespace Iteria.EditorTooling
 		{
 			text = e.newValue ? local : global;
 			Tools.pivotRotation = e.newValue ? PivotRotation.Local : PivotRotation.Global;
+   expectedRotation = Tools.pivotRotation;
 		}
 
 		void CheckChange()
 		{
 			if(Tools.pivotRotation != expectedRotation)
-			{
 				ToggleValue();
-				expectedRotation = Tools.pivotRotation;
-			}
 		}
 	}
 
@@ -73,15 +71,13 @@ namespace Iteria.EditorTooling
 		{
 			text = e.newValue ? pivot : center;
 			Tools.pivotMode = e.newValue ? PivotMode.Pivot : PivotMode.Center;
+   expectedMode = Tools.pivotMode;
 		}
 
 		void CheckChange()
 		{
 			if(Tools.pivotMode != expectedMode)
-			{
 				ToggleValue();
-				expectedMode = Tools.pivotMode;
-			}
 		}
 	}
 }
