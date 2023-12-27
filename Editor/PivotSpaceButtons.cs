@@ -40,7 +40,7 @@ namespace Iteria.EditorTooling
 		{
 			text = e.newValue ? local : global;
 			Tools.pivotRotation = e.newValue ? PivotRotation.Local : PivotRotation.Global;
-   expectedRotation = Tools.pivotRotation;
+			expectedRotation = Tools.pivotRotation;
 		}
 
 		void CheckChange()
@@ -71,7 +71,7 @@ namespace Iteria.EditorTooling
 		{
 			text = e.newValue ? pivot : center;
 			Tools.pivotMode = e.newValue ? PivotMode.Pivot : PivotMode.Center;
-   expectedMode = Tools.pivotMode;
+			expectedMode = Tools.pivotMode;
 		}
 
 		void CheckChange()
