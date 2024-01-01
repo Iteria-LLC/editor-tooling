@@ -1,7 +1,9 @@
 # editor-tooling
 ## How to install
 Select "Add package from git URL..." in the Package Manager, and enter this URL:
-##### `https://github.com/Iteria-LLC/editor-tooling.git`
+```
+https://github.com/Iteria-LLC/editor-tooling.git
+```
 
 #### Pivot/Space Toolbar button replacement
 Add **Pivot & Space Selection** from Scene View overlay menu.
@@ -25,6 +27,8 @@ Rotates selection 90 degrees on the World Y axis in one press.
 
 #### Run Existing Build
 Under File menu.
+
+Runs the last created build.
 
 #### Open Persistent Data Folder
 Under File menu.
