@@ -6,15 +6,15 @@ using System.Collections.Generic;
 
 namespace Iteria.EditorTooling
 {
-	[Overlay(typeof(SceneView), "Pivot & Space Selection", defaultDisplay = true)]
+	[Overlay(typeof(SceneView), "Pivot & Space Selection", defaultDisplay = true, defaultDockPosition = DockPosition.Top, defaultDockZone = DockZone.TopToolbar, defaultLayout = Layout.HorizontalToolbar)]
 	public class PivotSpaceButtons : Overlay, ICreateToolbar
 	{
 		IEnumerable<string> ICreateToolbar.toolbarElements => k_ToolbarItems;
 		static readonly string[] k_ToolbarItems = new[]
 		{
-		"Toggle Tool Handle Rotation",
-		"Toggle Tool Handle Position"
-	};
+			"Toggle Tool Handle Rotation",
+			"Toggle Tool Handle Position"
+		};
 
 		public override VisualElement CreatePanelContent() => new Label() { text = "Please dock me to a toolbar! I'm your pivot and space controls!" };
 	}
