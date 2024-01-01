@@ -14,17 +14,6 @@ namespace Iteria.EditorTooling
 			System.Diagnostics.Process.Start("explorer", @path);
 		}
 
-		[MenuItem("File/Run Existing Build", priority = 211)]
-		public static void RunExistingBuild()
-		{
-			//TODO actually find build path instead of hard coding one.
-			var path = GetFullPath(Combine(Application.dataPath, "..", "Builds", $"{Application.productName}.exe"));
-			if(System.IO.File.Exists(path))
-				System.Diagnostics.Process.Start(path);
-			else
-				Debug.LogError($"Couldn't find {GetFileName(path)} in {GetDirectoryName(path)}. Aborting.");
-		}
-
 		[MenuItem("Tools/Editor/Rotate 90"), Shortcut("Iteria/Rotate 90", KeyCode.R, ShortcutModifiers.Shift)]
 		public static void Rotate90()
 		{
