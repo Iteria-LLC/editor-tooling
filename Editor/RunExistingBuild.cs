@@ -13,7 +13,7 @@ namespace Iteria.EditorTooling
 
 		public void OnPostprocessBuild(BuildReport report)
 		{
-            EditorPrefs.SetString(prefsLastBuildKey, report.summary.outputPath);
+			EditorPrefs.SetString(prefsLastBuildKey, report.summary.outputPath);
 		}
 
 		[MenuItem("File/Run Existing Build", priority = 211)]
@@ -21,7 +21,7 @@ namespace Iteria.EditorTooling
 		{
 			if(!EditorPrefs.HasKey(prefsLastBuildKey))
 			{
-                Debug.LogError("No previous build found. Try making a new build with this package installed.");
+				Debug.LogError("No previous build found. Try making a new build with this package installed.");
 				return;
 			}
 
