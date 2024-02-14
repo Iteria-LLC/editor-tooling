@@ -14,7 +14,7 @@ namespace Iteria.EditorTooling
 		public delegate void PostGroupCreated();
 		public static PostGroupCreated postGroupCreated;
 
-		public delegate void SetGroupPosition();
+		public delegate void SetGroupPosition(Transform group);
 		public static SetGroupPosition setGroupPosition;
 
 		[Shortcut("Create/Dissolve Editor Group", KeyCode.G, ShortcutModifiers.Control)]
