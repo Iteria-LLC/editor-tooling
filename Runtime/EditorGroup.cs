@@ -11,6 +11,12 @@ namespace Iteria.EditorTooling
 	[SelectionBase]
 	public class EditorGroup : MonoBehaviour
 	{
+		public delegate void PostGroupCreated();
+		public static PostGroupCreated postGroupCreated;
+
+		public delegate void SetGroupPosition();
+		public static SetGroupPosition setGroupPosition;
+
 		[Shortcut("Create/Dissolve Editor Group", KeyCode.G, ShortcutModifiers.Control)]
 		public static void GroupOrDissolve() => GroupSelection(false);
 
@@ -45,6 +51,8 @@ namespace Iteria.EditorTooling
 				pos += Selection.transforms[i].position;
 			pos /= Selection.transforms.Length;
 
+			setGroupPosition();
+
 			var g = new GameObject("Group", typeof(EditorGroup));
 			g.transform.position = pos;
 			Undo.RegisterCreatedObjectUndo(g, "Created editor group");
@@ -60,6 +68,8 @@ namespace Iteria.EditorTooling
 
 			Undo.CollapseUndoOperations(id);
 			Selection.activeGameObject = g;
+
+			postGroupCreated();
 		}
 
 		public void DissolveGroup()
