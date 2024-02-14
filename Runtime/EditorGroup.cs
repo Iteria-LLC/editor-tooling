@@ -51,10 +51,9 @@ namespace Iteria.EditorTooling
 				pos += Selection.transforms[i].position;
 			pos /= Selection.transforms.Length;
 
-			setGroupPosition();
-
 			var g = new GameObject("Group", typeof(EditorGroup));
 			g.transform.position = pos;
+			setGroupPosition(g.transform);
 			Undo.RegisterCreatedObjectUndo(g, "Created editor group");
 
 			for(int i = 0; i < Selection.transforms.Length; i++)
