@@ -11,11 +11,11 @@ namespace Iteria.EditorTooling
 	[SelectionBase]
 	public class EditorGroup : MonoBehaviour
 	{
-		public delegate void PostGroupCreated();
-		public static PostGroupCreated postGroupCreated;
+		public delegate void PostCreated();
+		public static PostCreated PostGroupCreated;
 
-		public delegate void SetGroupPosition(Transform group);
-		public static SetGroupPosition setGroupPosition;
+		public delegate void SetTransform(Transform group);
+		public static SetTransform SetGroupTransform;
 
 		[Shortcut("Create/Dissolve Editor Group", KeyCode.G, ShortcutModifiers.Control)]
 		public static void GroupOrDissolve() => GroupSelection(false);
@@ -53,8 +53,8 @@ namespace Iteria.EditorTooling
 
 			var g = new GameObject("Group", typeof(EditorGroup));
 			g.transform.position = pos;
-			if(setGroupPosition.GetInvocationList().Length > 0)
-				setGroupPosition(g.transform);
+			if(SetGroupTransform != null)
+				SetGroupTransform(g.transform);
 			Undo.RegisterCreatedObjectUndo(g, "Created editor group");
 
 			for(int i = 0; i < Selection.transforms.Length; i++)
@@ -69,8 +69,8 @@ namespace Iteria.EditorTooling
 			Undo.CollapseUndoOperations(id);
 			Selection.activeGameObject = g;
 
-			if(postGroupCreated.GetInvocationList().Length > 0)
-				postGroupCreated();
+			if(PostGroupCreated != null)
+				PostGroupCreated();
 		}
 
 		public void DissolveGroup()
@@ -128,6 +128,16 @@ namespace Iteria.EditorTooling
 
 			foreach(var group in Object.FindObjectsByType<EditorGroup>(FindObjectsInactive.Include, FindObjectsSortMode.None))
 				group.DissolveGroupRaw();
+		}
+	}
+
+	[InitializeOnLoad]
+	static class ClearDelegates
+	{
+		static ClearDelegates()
+		{
+			EditorGroup.SetGroupTransform = null;
+			EditorGroup.PostGroupCreated = null;
 		}
 	}
 }
