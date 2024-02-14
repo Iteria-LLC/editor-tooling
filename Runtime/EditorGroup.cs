@@ -53,7 +53,8 @@ namespace Iteria.EditorTooling
 
 			var g = new GameObject("Group", typeof(EditorGroup));
 			g.transform.position = pos;
-			setGroupPosition(g.transform);
+			if(setGroupPosition.GetInvocationList().Length > 0)
+				setGroupPosition(g.transform);
 			Undo.RegisterCreatedObjectUndo(g, "Created editor group");
 
 			for(int i = 0; i < Selection.transforms.Length; i++)
@@ -68,7 +69,8 @@ namespace Iteria.EditorTooling
 			Undo.CollapseUndoOperations(id);
 			Selection.activeGameObject = g;
 
-			postGroupCreated();
+			if(postGroupCreated.GetInvocationList().Length > 0)
+				postGroupCreated();
 		}
 
 		public void DissolveGroup()
