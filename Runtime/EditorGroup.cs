@@ -94,12 +94,15 @@ namespace Iteria.EditorTooling
 
 		public void DissolveGroupRaw()
 		{
-			GameObject[] children = new GameObject[transform.childCount];
-			for(int i = 0; i < transform.childCount; i++)
-				children[i] = transform.GetChild(i).gameObject;
+			if(gameObject.activeInHierarchy)
+			{
+				GameObject[] children = new GameObject[transform.childCount];
+				for(int i = 0; i < transform.childCount; i++)
+					children[i] = transform.GetChild(i).gameObject;
 
-			for(int i = 0; i < children.Length; i++)
-				children[i].transform.SetParent(null, true);
+				for(int i = 0; i < children.Length; i++)
+					children[i].transform.SetParent(null, true);
+			}
 
 			DestroyImmediate(gameObject);
 		}
